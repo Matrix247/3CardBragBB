@@ -67,6 +67,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+    <Content Include="vendor\bootstrap-3.3.7-dist\css\bootstrap-theme.css.map" />
+    <Content Include="vendor\bootstrap-3.3.7-dist\css\bootstrap-theme.min.css.map" />
+    <Content Include="vendor\bootstrap-3.3.7-dist\css\bootstrap.css.map" />
+    <Content Include="vendor\bootstrap-3.3.7-dist\css\bootstrap.min.css.map" />
+    <Content Include="vendor\bootstrap-3.3.7-dist\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="vendor\bootstrap-3.3.7-dist\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="vendor\bootstrap-3.3.7-dist\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="vendor\bootstrap-3.3.7-dist\fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -75,6 +83,74 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="index.html" />
+    <Content Include="resources\css\main.css" />
+    <Content Include="resources\images\cards\10c.png" />
+    <Content Include="resources\images\cards\10d.png" />
+    <Content Include="resources\images\cards\10h.png" />
+    <Content Include="resources\images\cards\10s.png" />
+    <Content Include="resources\images\cards\2c.png" />
+    <Content Include="resources\images\cards\2d.png" />
+    <Content Include="resources\images\cards\2h.png" />
+    <Content Include="resources\images\cards\2s.png" />
+    <Content Include="resources\images\cards\3c.png" />
+    <Content Include="resources\images\cards\3d.png" />
+    <Content Include="resources\images\cards\3h.png" />
+    <Content Include="resources\images\cards\3s.png" />
+    <Content Include="resources\images\cards\4c.png" />
+    <Content Include="resources\images\cards\4d.png" />
+    <Content Include="resources\images\cards\4h.png" />
+    <Content Include="resources\images\cards\4s.png" />
+    <Content Include="resources\images\cards\5c.png" />
+    <Content Include="resources\images\cards\5d.png" />
+    <Content Include="resources\images\cards\5h.png" />
+    <Content Include="resources\images\cards\5s.png" />
+    <Content Include="resources\images\cards\6c.png" />
+    <Content Include="resources\images\cards\6d.png" />
+    <Content Include="resources\images\cards\6h.png" />
+    <Content Include="resources\images\cards\6s.png" />
+    <Content Include="resources\images\cards\7c.png" />
+    <Content Include="resources\images\cards\7d.png" />
+    <Content Include="resources\images\cards\7h.png" />
+    <Content Include="resources\images\cards\7s.png" />
+    <Content Include="resources\images\cards\8c.png" />
+    <Content Include="resources\images\cards\8d.png" />
+    <Content Include="resources\images\cards\8h.png" />
+    <Content Include="resources\images\cards\8s.png" />
+    <Content Include="resources\images\cards\9c.png" />
+    <Content Include="resources\images\cards\9d.png" />
+    <Content Include="resources\images\cards\9h.png" />
+    <Content Include="resources\images\cards\9s.png" />
+    <Content Include="resources\images\cards\ac.png" />
+    <Content Include="resources\images\cards\ad.png" />
+    <Content Include="resources\images\cards\ah.png" />
+    <Content Include="resources\images\cards\as.png" />
+    <Content Include="resources\images\cards\blank.png" />
+    <Content Include="resources\images\cards\blank1.png" />
+    <Content Include="resources\images\cards\jc.png" />
+    <Content Include="resources\images\cards\jd.png" />
+    <Content Include="resources\images\cards\jh.png" />
+    <Content Include="resources\images\cards\js.png" />
+    <Content Include="resources\images\cards\kc.png" />
+    <Content Include="resources\images\cards\kd.png" />
+    <Content Include="resources\images\cards\kh.png" />
+    <Content Include="resources\images\cards\ks.png" />
+    <Content Include="resources\images\cards\qc.png" />
+    <Content Include="resources\images\cards\qd.png" />
+    <Content Include="resources\images\cards\qh.png" />
+    <Content Include="resources\images\cards\qs.png" />
+    <Content Include="resources\js\deck.js" />
+    <Content Include="resources\js\three-card-brag-bb.js" />
+    <Content Include="vendor\bootstrap-3.3.7-dist\css\bootstrap-theme.css" />
+    <Content Include="vendor\bootstrap-3.3.7-dist\css\bootstrap-theme.min.css" />
+    <Content Include="vendor\bootstrap-3.3.7-dist\css\bootstrap.css" />
+    <Content Include="vendor\bootstrap-3.3.7-dist\css\bootstrap.min.css" />
+    <Content Include="vendor\bootstrap-3.3.7-dist\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="vendor\bootstrap-3.3.7-dist\js\bootstrap.js" />
+    <Content Include="vendor\bootstrap-3.3.7-dist\js\bootstrap.min.js" />
+    <Content Include="vendor\bootstrap-3.3.7-dist\js\npm.js" />
+    <Content Include="vendor\js\require.js" />
+    <Content Include="vendor\js\thenBy.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

@@ -1,0 +1,73 @@
+﻿
+body 
+{
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: #4cff00;
+}
+
+.content
+{
+    width: 520px;
+    margin: 0 auto;
+}
+
+#gameMessages
+{
+    padding: 5px;
+    width: 520px;
+    margin: 0 auto;
+    font-weight: bold;
+    font-size: large;
+    text-align: center;
+    margin: 5px;
+}
+
+#communityCards
+{
+    display: block;
+    height: 150px;
+    padding: 20px;
+    margin: 0 auto;
+    text-align:center;
+    vertical-align: top;
+}
+
+.playerHighlighted
+{
+    display: inline-block;
+    width: 255px;
+    height: 220px;
+    padding: 10px; 
+    margin: 5px 0 0 0;
+    border: 1px solid red;
+    vertical-align: top;
+}
+
+.playerNotHighlighted
+{
+    display: inline-block;
+    width: 255px;
+    height: 220px;
+    padding: 10px; 
+    margin: 5px 0 0 0;
+    border: none;
+    vertical-align: top;
+}
+
+.playerDead
+{
+    display: inline-block;
+    width: 255px;
+    height: 220px;
+    padding: 10px; 
+    margin: 5px 0 0 0;
+    vertical-align: top;
+    opacity: 0.5;
+}
+
+.knocked 
+{
+    font-weight: bold;
+    font-size: large;
+}
