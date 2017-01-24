@@ -32,23 +32,22 @@ var ThreeCardBragBB = (function () {
     function determinePlayerAction()
     {
         var x = 0;
-        var handsFound = [];
         var results = [];
 
         // First check the community cards to see if there are any made hands
         results.push(runHandMatrix(_communityCards[0], _communityCards[1],
-               _communityCards[2], _players[_currentPlayer].name, 4, 4));
+               _communityCards[2], 4, 4));
 
         // Loop through community cards to see if any hands are possible
         for (x; x <= _communityCards.length - 1; x++) {
             results.push(runHandMatrix(_communityCards[x], _players[_currentPlayer].holeCards[1],
-                _players[_currentPlayer].holeCards[2], _players[_currentPlayer].name,0,x));
+                _players[_currentPlayer].holeCards[2],0,x));
 
             results.push(runHandMatrix(_players[_currentPlayer].holeCards[0], _communityCards[x],
-                _players[_currentPlayer].holeCards[2], _players[_currentPlayer].name,1,x))
+                _players[_currentPlayer].holeCards[2],1,x))
 
             results.push(runHandMatrix(_players[_currentPlayer].holeCards[0], _players[_currentPlayer].holeCards[1],
-                _communityCards[x], _players[_currentPlayer].name,2,x));
+                _communityCards[x],2,x));
         }
 
         // Sort by hand strength
@@ -122,7 +121,7 @@ var ThreeCardBragBB = (function () {
             swapAllCards();
 
             var madeHand = runHandMatrix(_players[_currentPlayer].holeCards[0], _players[_currentPlayer].holeCards[1],
-                            _players[_currentPlayer].holeCards[2], _players[_currentPlayer].name, 4, 4);
+                            _players[_currentPlayer].holeCards[2], 4, 4);
 
             if ($("#playerHasKnocked").is(':checked') && !_playerKnocked) {
                 _players[_currentPlayer].hasKnocked = true;
@@ -175,7 +174,7 @@ var ThreeCardBragBB = (function () {
         _players[_currentPlayer].takeTurn();
     }
 
-    function runHandMatrix(card1, card2, card3, player, holeCardNo, commCardNo)
+    function runHandMatrix(card1, card2, card3, holeCardNo, commCardNo)
     {     
         var cards = [card1, card2, card3];
       
@@ -191,7 +190,6 @@ var ThreeCardBragBB = (function () {
         /// Test for 3-of-a-kind (trips)
         if (checkForFlushOrTrips(card1.cardNo, card2.cardNo, card3.cardNo))
         {
-            console.log(player + " trips");
             if (card1.cardNo === 2 && card2.cardNo === 2 && card3.cardNo === 2)
             { return new madeHand(21, cards, "3kind (333)", highCard, holeCardNo, commCardNo); }
             else
@@ -201,7 +199,6 @@ var ThreeCardBragBB = (function () {
         /// Test for a run
         if (checkForRun(card1.cardNo, card2.cardNo, card3.cardNo))
         {
-            console.log(player + " run")
             var hasA23Run = lowCard === 1 && highCard === 13 ? true : false;
 
             if (checkForFlushOrTrips(card1.cardSuit, card2.cardSuit, card3.cardSuit)) {
@@ -225,7 +222,7 @@ var ThreeCardBragBB = (function () {
 
         /// Test for possible flush
         if (checkForFlushOrTrips(card1.cardSuit, card2.cardSuit, card3.cardSuit))
-        { console.log(player + " flush"); return new madeHand(15, cards, "Flush", highCard, holeCardNo, commCardNo); }
+        { return new madeHand(15, cards, "Flush", highCard, holeCardNo, commCardNo); }
 
         /// Test for a pair
         if (checkForPair(card1.cardNo, card2.cardNo, card3.cardNo))
@@ -244,7 +241,6 @@ var ThreeCardBragBB = (function () {
                 highCard = card1.cardNo;
             }
 
-            console.log(player + " pair");
             return new madeHand(pairedCard+1, cards, "Pair", highCard, holeCardNo, commCardNo);
         }
 
@@ -304,9 +300,10 @@ var ThreeCardBragBB = (function () {
         var totalPlayers = _playerCount;
         var cardsDealt = 0;
         var currentCard = 0;
-
+        var i = 0;
         var spacer = 2000;
-        for (var i = 0; i <= noCardsToBeDealt; i++) {
+
+        for (i; i <= noCardsToBeDealt; i++) {
 
             (function loop(spacer1, i1) {
 
@@ -413,8 +410,6 @@ var ThreeCardBragBB = (function () {
         this.selectedHand = selectedHand;
         this.takeTurn = function () {
 
-            console.log(this.name + " taking turn");
-
             $(this.outerDisplay).attr("class", "playerHighlighted");
 
             /// Check to see if a player has knocked, if so end the round and see who loses
@@ -451,10 +446,11 @@ var ThreeCardBragBB = (function () {
 
                 // If last hand weaker than next best then that player loses life
                 if (tempPlayerArray[0].selectedHand.strength < tempPlayerArray[1].selectedHand.strength) {
+
                     losingPlayer = $.grep(_players, function (e) { return e.name === tempPlayerArray[0].name; });
                     losingPlayer[0].lifes -= 1;
-
                     $("#gameMessages").html(tempPlayerArray[0].name + " losses!!");
+
                 } else if (tempPlayerArray[0].selectedHand.highCard < tempPlayerArray[1].selectedHand.highCard) {
                     // Two players have the same hand, so check kicker
                     losingPlayer = $.grep(_players, function (e) { return e.name === tempPlayerArray[0].name; });
@@ -478,11 +474,12 @@ var ThreeCardBragBB = (function () {
                     _playerCount -= 1;
 
                     if (losingPlayer[0].isHuman) {
+                        // Human player is dead, game over
                         humanPlayerAlive = false;
                         $("#gameMessages").html("Human player loses, Game Over!!!!");
                     } else if (_playerCount === 1) {
                         // Only one player left, end of the game we have a winner
-                          $("#gameMessages").html(_players[0].name + " has WON the game!!!!");
+                        $("#gameMessages").html(_players[0].name + " has WON the game!!!!");
                     }
 
                     if (deadPlayerIndex > 0) {
@@ -556,14 +553,12 @@ var ThreeCardBragBB = (function () {
 
             // See what the best hand is
             results.push(runHandMatrix(_players[_currentPlayer].holeCards[0], _players[_currentPlayer].holeCards[1],
-            _players[_currentPlayer].holeCards[2], _players[_currentPlayer].name, 0, commCardId));
+            _players[_currentPlayer].holeCards[2], 0, commCardId));
 
             // Sort by hand strength
             results.sort(firstBy(function (a, b) {
                 return b.strength - a.strength
             }).thenBy(function (a, b) { return b.highCard - a.highCard }));
-
-            console.log(_players[_currentPlayer].name + " best hand = " + results[0].handType + " : " + results[0].highCard);
 
             if ($("#playerHasKnocked").is(':checked') && _playerKnocked === false) {
                 _players[_currentPlayer].hasKnocked = true;
