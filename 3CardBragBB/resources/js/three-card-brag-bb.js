@@ -177,7 +177,7 @@ var ThreeCardBragBB = (function () {
     function runHandMatrix(card1, card2, card3, holeCardNo, commCardNo)
     {     
         var cards = [card1, card2, card3];
-      
+          
         /// Calculate the high card for nay made hand
         var cardNumberArray = [card1.cardNo, card2.cardNo, card3.cardNo];
         cardNumberArray.sort(function (a, b) { return b - a; });
@@ -469,7 +469,7 @@ var ThreeCardBragBB = (function () {
                     $(_players[deadPlayerIndex].cardPlaceHolder).html("");
                     $(_players[deadPlayerIndex].outerDisplay).attr("class", "playerDead");
                     $(_players[deadPlayerIndex].display).html("");
-
+                    var y = 0;
                     _players.splice(deadPlayerIndex, 1);
                     _playerCount -= 1;
 
@@ -565,6 +565,7 @@ var ThreeCardBragBB = (function () {
                 $(_players[_currentPlayer].display).append("<br/><span class='knocked'>KNOCKED</span>");
                 _playerKnocked = true;
             }
+
 
             _players[_currentPlayer].selectedHand = results[0];
 
